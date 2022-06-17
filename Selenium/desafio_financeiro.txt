@@ -1,0 +1,6 @@
+ Desafio - Rotina de Baixar uma Planilha da Web
+
+- Imagine que você trabalhe no Mercado Financeiro e tem que todo dia/semana baixar uma planilha com as cotações do dólar
+- Usaremos o site investing.com para baixar esses dados
+- O link onde ficam esses dados é: https://br.investing.com/currencies/usd-brl-historical-data
+
