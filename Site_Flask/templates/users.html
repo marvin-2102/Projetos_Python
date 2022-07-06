@@ -25,7 +25,7 @@
                     <div class="d-flex flex-column">
 
                         <span class="articles">Posts</span>
-                        <span class="number1">{{ user.posts }}</span>
+                        <span class="number1">{{ user.contar_posts() }}</span>
 
                     </div>
                     {% if 'Não informado' in user.cursos %}
@@ -43,6 +43,7 @@
 
                         </div>
                     {% endif %}
+
                    </div>
 
                 </div>
