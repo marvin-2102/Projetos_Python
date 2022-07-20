@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <a style="color:aliceblue" class="navbar-brand" href="{{ url_for('home') }}">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:aliceblue">
+            Temporadas
+          </a>
+          <ul  style="background-color: black;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a style="color:aliceblue" class="dropdown-item" href="{{ url_for('temporada2021') }}">Temporada2021</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a style="color:aliceblue" class="dropdown-item" href="{{ url_for('temporada2022') }}">Temporada2022</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a style="color:aliceblue" class="nav-link" href="{{ url_for('apoia_se') }}">Apoia-se</a>
+        </li>
+      </ul>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Pesquise" aria-label="Search">
+        <button class="btn btn-warning" type="submit">Pesquise</button>
+      </form>
+    </div>
+  </div>
+</nav>
