@@ -8,19 +8,16 @@ cam = cv.VideoCapture(0)
 # title of the app
 cv.namedWindow('Câmera do Robô')
 
-# Conta quantas imagens já estão na pasta
+# Acessa e conta quantas imagens já estão na pasta
 
-path = '/home/marcus/Documentos/UFRN/identificando/imagens'
+path = 'camiho da pasta imagens'
 img_count = os.listdir(path)
-
-# let's assume the number of images gotten is 0
 img_counter = len(img_count)
 
-# while loop
 while True:
-    # intializing the frame, ret
+    # Armazenando os valores da câmera
     ret, frame = cam.read()
-    # if statement
+    # Se nenhum objeto for encontrado, o programa avisa
     if not ret:
         print('Falha em reconhecer objeto')
         break
@@ -40,7 +37,7 @@ while True:
         # saves the image as a png file
         cv.imwrite(f'{img_name}', frame)
 
-        shutil.move(f'/home/marcus/Documentos/UFRN/{img_name}', f'/home/marcus/Documentos/UFRN/identificando/imagens/{img_name}')
+        shutil.move(f'pasta em que a imagem fica salva inicialmente/{img_name}', f'camiho da pasta imagens/{img_name}')
         print('Foto Tirada!')
         # the number of images automaticallly increases by 1
         img_counter += 1
