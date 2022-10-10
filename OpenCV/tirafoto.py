@@ -1,11 +1,10 @@
-# importing the python open cv library
 import cv2 as cv
 import shutil
 import os
-# intialize the webcam and pass a constant which is 0
+# Inicializa a webcam
 cam = cv.VideoCapture(0)
 
-# title of the app
+# Tiulo da janela
 cv.namedWindow('Câmera do Robô')
 
 # Acessa e conta quantas imagens já estão na pasta
@@ -25,26 +24,27 @@ while True:
     cv.imshow('Testando', frame)
     #to get continuous live video feed from my laptops webcam
     key  = cv.waitKey(1)
-    # if the escape key is been pressed, the app will stop
+    # Se a tecla 'ESC' for pressionada, o programa para
     if key%256 == 27:
         print('Fechando Webcam')
         break
-    # if the spacebar key is been pressed
-    # screenshots will be taken
+        
+    # Se a tecla SPACEBAR for pressionada, uma print da webcam é tirada
     elif key%256  == 32:
-        # the format for storing the images scrreenshotted
+        # Cmo a imagem será salva
         img_name = f'Forma{img_counter}.png'
-        # saves the image as a png file
+        # Salva a imagem
         cv.imwrite(f'{img_name}', frame)
-
+           
+        # Move as imagem para a pasta que eu quero
         shutil.move(f'pasta em que a imagem fica salva inicialmente/{img_name}', f'camiho da pasta imagens/{img_name}')
         print('Foto Tirada!')
-        # the number of images automaticallly increases by 1
+        # Adiciona 1 ao número de imagem salvas
         img_counter += 1
 
-# release the camera
+# Libera a webcam
 cv.release()
 
-# stops the camera window
+# Fecha todas as janelas
 cv.destoryAllWindows()
                           
