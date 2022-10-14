@@ -9,7 +9,7 @@ image_cinza = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
 ret, limiar = cv.threshold(image_cinza, 127, 255, 0)
 
 
-contornos, hierarquia = cv.findContours(limiar, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+contornos,_ = cv.findContours(limiar, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 
 # Cada contorno é guardado como um vetor
 # O segundo argumento tem que sempre ser em formato de lista
