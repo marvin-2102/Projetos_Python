@@ -20,9 +20,8 @@ while True:
     if not ret:
         print('Falha em reconhecer objeto')
         break
-    # the frame will show with the title of test
+    # Vai mostrar o título do frame
     cv.imshow('Testando', frame)
-    #to get continuous live video feed from my laptops webcam
     key  = cv.waitKey(1)
     # Se a tecla 'ESC' for pressionada, o programa para
     if key%256 == 27:
