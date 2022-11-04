@@ -1,5 +1,8 @@
 import os
-def create_pos_n_neg():
+
+# Cria o arquivo bg.text
+def cria_bg():
+
     for file_type in ['neg']:
         for img in os.listdir(file_type):
             if file_type == 'pos':
@@ -8,6 +11,6 @@ def create_pos_n_neg():
                     f.write(line)
             elif file_type == 'neg':
                 line = file_type+'/'+img+'\n'
-                with open('bg.txt', 'a') as f:
+                with open('arquivosSamples/bg.txt', 'a') as f:
                     f.write(line)
-create_pos_n_neg()
+cria_bg()
