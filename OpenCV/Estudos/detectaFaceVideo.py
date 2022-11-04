@@ -1,7 +1,7 @@
 import cv2 as cv
 
 # O valor do VideoCapture() é 0 apenas em notebooks
-# Num PC normal, o valor padrão é 1 
+# Num PC normal, o valor padrão é 1 ou 2
 webcam = cv.VideoCapture(0)
 
 default_face = cv.CascadeClassifier('haarcascades/haarcascade_frontalface_default.xml')
