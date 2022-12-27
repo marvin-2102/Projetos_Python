@@ -5,7 +5,7 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = '89876eade3c65e5087860989a134d9bd'
+app.config['SECRET_KEY'] = 'Key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///comunidade.db'
 
 database = SQLAlchemy(app) #Cria um banco de dados usando a classe sqlalchemy, usando as config do flask
