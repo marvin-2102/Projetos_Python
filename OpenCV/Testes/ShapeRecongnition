@@ -1,0 +1,66 @@
+import cv2
+from time import sleep
+cam = cv2.VideoCapture(0)
+
+def zoom(img, zoom_factor=4):
+    return cv2.resize(img, None, fx=zoom_factor, fy=zoom_factor)
+
+while True:
+
+    ret, image = cam.read()
+
+    sleep(0.5)
+
+    cropped = image[250:390, 300:390]
+    zoomed = zoom(image, 3)
+    image = zoom(cropped, 3)
+
+    key = cv2.waitKey(1)
+
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    canny = cv2.Canny(gray, 10, 150)
+    canny = cv2.dilate(canny, None, iterations=1)
+    canny = cv2.erode(canny, None, iterations=1)
+
+    # _, th = cv2.threshold(gray, 10, 155, cv2.THRESH_BINARY)
+    ctns, _ = cv2.findContours(canny, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    # cv2.drawContours(image, ctns, -1, (255,255,255), 2)
+
+    i = 0
+
+    epsilon = 0.01 *cv2.arcLength([ctns[i]], True)
+    approx = cv2.approxPolyDP([ctns[i]], epsilon, True)
+
+    x,y,w,h = cv2.boundingRect(approx)
+
+    key = cv2.waitKey(1)
+
+    if key % 256 == 27:
+        print('Fechando Webcam')
+        break
+
+    if len(approx) == 3:
+            cv2.putText(image, "Triangulo", (x-5, y-15),1,1,(255,255,255),1)
+
+    if len(approx) == 4:
+        aspect_ratio = float(w)/h
+        print("Aspect ratio", aspect_ratio)
+        if aspect_ratio == 1:
+            cv2.putText(image, "Quadrado", (x,y-20), 1,1,(255,255,255), 1)
+        else:
+                cv2.putText(image, "Retangulo", (x,y-20), 1, 1, (255,255,255),1)
+    if len(approx) == 5:
+            cv2.putText(image, "Pentagono", (x,y-20),1,1,(255,255,255),1)
+    if len(approx) == 6:
+            cv2.putText(image, "Hexagono", (x, y-20), 1, 1, (255,255,255),1)
+    if len(approx) == 10:
+            cv2.putText(image, "Decagono", (x, y-20),1, 1,(255,255,255),1)
+    if len(approx) == 12:
+            cv2.putText(image, "Duodecagono", (x, y-20), 1, 1,(255,255,255),1)
+    if len(approx) > 12:
+            cv2.putText(image, "circulo", (x, y-20), 1, 1, (255,255,255),1)
+
+    cv2.drawContours(image, [approx], -1, (255,255,255), 4)
+    cv2.imshow("image", image)
+    cv2.waitKey(0)
+    i += 1
