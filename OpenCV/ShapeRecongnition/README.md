@@ -19,6 +19,9 @@ Isso não significa que basta tratar as imagens e o algoritmo funcionará perfei
 
 
 
-Referençias:
+
+
+
+Referencias:
 
 https://en.wikipedia.org/wiki/Ramer–Douglas–Peucker_algorithm
